@@ -10,7 +10,10 @@
 #include <string.h>
 #include <math.h>
 
-#include "Shape.h"
+#include "include/shape.h"
+#include "include/rectangle.h"
+#include "include/multcirc.h"
+#include "include/circle.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -31,7 +34,7 @@ const int HEIGHT = 480;
 static int screenx = 0;
 static int screeny = 0;
 
-Shape* shapes[5]; // Array of pointers to 5 shapes
+Shape* shapes[6]; // Array of pointers to 5 shapes
 
 
 int main(int argc, char** argv)
@@ -69,11 +72,12 @@ void init()
 	// This creates five shapes with either the specified radius or side of a square
 	// Glut doesn't return from the main loop, so currently these ball objects are deleted only when the app exits.
 	// If we had a keyboard handler or something we could check for an escape key or something and destroy these and exit.
-	shapes[0] = new Shape(1, 5);			// Circle with radius = 5
-	shapes[1] = new Shape(0, 30);			// Square with diameter = 30
-	shapes[2] = new Shape(0, 70);			// Square with diameter = 70
-	shapes[3] = new Shape(2, 50);			// MultiColorCircle with radius = 50
-	shapes[4] = new Shape(2, 100);			// MultiColorCircl with radius = 100
+	shapes[0] = new Circle(5);			// Circle with radius = 5
+	shapes[1] = new Rectangle(30);			// Square with diameter = 30
+	shapes[2] = new Rectangle(70);			// Square with diameter = 70
+	shapes[3] = new MultCirc(50);			// MultiColorCircle with radius = 50
+	shapes[4] = new MultCirc(100);			// MultiColorCircl with radius = 100
+	shapes[5] = new Shape();
 }
 
 // This function updates the position of each shape then redraws it on the screen by calling display.
@@ -83,7 +87,7 @@ void init()
 // when the system is idle.
 void updateShape()
 {
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 6; i++)
 		shapes[i]->updateCoordinates(); // The function updates the shape's location on the screen
 	display();
 	// The line below implements a delay; it specifies how many milliseconds to wait before exiting.  When this function
@@ -99,7 +103,7 @@ void display()
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	// Loop through each shape and draw it
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 6; i++)
 		shapes[i]->draw();
 
 	glutSwapBuffers();

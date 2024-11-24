@@ -1,6 +1,6 @@
 FILE UPDATES
-./src/doodlebug.cpp: Thu Nov 21 08:50:55 PM AKST 2024
-./src/organism.cpp: Thu Nov 21 08:52:41 PM AKST 2024
-./src/world.cpp: Fri Nov 22 08:19:16 PM AKST 2024
-./src/ant.cpp: Thu Nov 21 12:07:37 PM AKST 2024
-./main.cpp: Fri Nov 22 08:23:30 PM AKST 2024
+./main.cpp: Sat Nov 23 23:24:07 AKST 2024
+./src/world.cpp: Sat Nov 23 16:10:38 AKST 2024
+./src/doodlebug.cpp: Sat Nov 23 16:10:56 AKST 2024
+./src/organism.cpp: Sat Nov 23 16:10:24 AKST 2024
+./src/ant.cpp: Sat Nov 23 16:10:52 AKST 2024

@@ -28,6 +28,8 @@ int main() {
 	World* world;
 	world = new World(seed, 'q');
 	world->createBugs(100, 5);
+	world->updateBugs('X');
+	world->updateBugs('o');
 	
 	while( !world->shouldExit() ){
 		refresh();

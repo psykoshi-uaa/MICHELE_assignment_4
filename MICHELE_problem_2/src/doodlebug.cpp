@@ -4,7 +4,7 @@
 Dood::Dood() : Organism() {}
 
 Dood::Dood(struct position startPos) :
-    Organism(3, 0, startPos, 2, 8, 'X') {}
+    Organism(3, 1, startPos, 2, 8, 'X') {}
 
 Dood::~Dood() {}
 

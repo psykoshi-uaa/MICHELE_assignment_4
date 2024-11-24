@@ -2,7 +2,7 @@
 
 class Shape
 {
-private:
+protected:
 	static const int WIDTH = 720;
 	static const int HEIGHT = 480;
 	float x;
@@ -15,7 +15,7 @@ public:
 	Shape();
 	Shape(int value); // Type: 0=Square, 1=Circle, 2=MultiColorCircle.    Value:  Radius or Diameter
 	~Shape();
-	void draw();
+	virtual void draw();
 	void updateCoordinates();
 };
 

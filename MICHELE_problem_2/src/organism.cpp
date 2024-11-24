@@ -3,7 +3,7 @@
 #include "../include/organism.h"
 
 Organism::Organism() :
-    hp(3), color(0), ageToBreed(0), breedCycle(0), asciiBody('b'), canMove(false),
+    hp(3), color(0), ageToBreed(0), breedCycle(1), asciiBody('b'), canMove(false),
     canBreed(false) {
 	curPos = { 0 };
 	findPos = { 0 };
@@ -63,7 +63,7 @@ bool Organism::getCanBreed() {
 }
 
 void Organism::hasBreeded() {
-	breedCycle = 0;
+	breedCycle = 1;
 	canBreed = false;
 }
 

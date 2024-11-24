@@ -1,4 +1,4 @@
-#include "Shape.h"
+#include "../include/shape.h"
 #include "GL/glut.h"
 #include "GL/gl.h"
 #include "GL/glu.h"
@@ -10,7 +10,6 @@ using namespace std;
 Shape::Shape()
 {
 	// By default, make this a circle of radius 20 pixels
-	type = 1;
 	radius = 20;
 
 	// Start at a random position and speed
@@ -20,24 +19,8 @@ Shape::Shape()
 	deltaY = ((static_cast<float>(rand()) / RAND_MAX) * 8) - 4;
 }
 
-Shape::Shape(int type, int value)
+Shape::Shape(int value)
 {
-	this->type = type;
-	if (type == 0)
-	{
-		// Square
-		diameter = value;
-	}
-	else if (type == 1)
-	{
-		// Circle
-		radius = value;
-	}
-	else if (type == 2)
-	{
-		// Multicolorcircle
-		radius = value;
-	}
 	// Start at a random position and speed
 	x = (float)(rand() % WIDTH);
 	y = (float)(rand() % HEIGHT);
@@ -53,58 +36,13 @@ Shape::~Shape()
 // This function draws the shape
 void Shape::draw()
 {
-	// Square
-	if (type == 0)
-	{
-		glColor3f(1, 0, 1);
-		glBegin(GL_QUADS);
-		glVertex2f(x - (diameter / 2), y - (diameter / 2));
-		glVertex2f(x + (diameter / 2), y - (diameter / 2));
-		glVertex2f(x + (diameter / 2), y + (diameter / 2));
-		glVertex2f(x - (diameter / 2), y + (diameter / 2));
-		glEnd();
-	}
-	// Circle
-	else if (type == 1)
-	{
-		glColor3f(1, 0, 0);
-		glBegin(GL_TRIANGLE_FAN);
-		glVertex2f(x, y);
-		for (float angle = 0; angle < 360; angle += 1)
-		{
-			glVertex2f(x + sin(angle) * radius, y + cos(angle) * radius);
-		}
-		glEnd();
-	}
-	else if (type == 2) // Multicolor circle
-	{
-		glColor3f(1, 0, 0);
-		glBegin(GL_TRIANGLE_FAN);
-		glVertex2f(x, y);
-		for (float angle = 0; angle < 360; angle += 1)
-		{
-			glVertex2f(x + sin(angle) * radius, y + cos(angle) * radius);
-		}
-		glEnd();
-
-		glColor3f(0, 1, 0);
-		glBegin(GL_TRIANGLE_FAN);
-		glVertex2f(x, y);
-		for (float angle = 0; angle < 360; angle += 1)
-		{
-			glVertex2f(x + sin(angle) * radius*2.0 / 3, y + cos(angle) * radius*2.0 / 3);
-		}
-		glEnd();
-
-		glColor3f(0, 0, 1);
-		glBegin(GL_TRIANGLE_FAN);
-		glVertex2f(x, y);
-		for (float angle = 0; angle < 360; angle += 1)
-		{
-			glVertex2f(x + sin(angle) * radius*1.0 / 3, y + cos(angle) * radius*1.0 / 3);
-		}
-		glEnd();
-	}
+	glBegin(GL_LINES);
+	glColor3f(1,0,0);
+	glVertex2f(x, y);
+	glVertex2f(x + radius, y + radius);
+	glVertex2f(x + radius, y);
+	glVertex2f(x, y + radius);
+	glEnd();
 }
 
 // This function updates the location of the shape, by adding in deltaX to the x coordinate
