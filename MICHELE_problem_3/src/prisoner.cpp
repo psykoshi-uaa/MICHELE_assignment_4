@@ -1,8 +1,8 @@
 #include "../include/prisoner.h"
 
-Prisoner::Prisoner() : place(0), next(nullptr), headPtr(nullptr), tailPtr(nullptr) {}
-Prisoner::Prisoner(int place) :
-place(place), next(nullptr), headPtr(nullptr), tailPtr(nullptr) {}
+Prisoner::Prisoner() : place(0), next(nullptr) {}
+Prisoner::Prisoner(int place, Prisoner* next) :
+	place(place), next(next) {}
 
 int Prisoner::getPlace() {
 	return place;
@@ -19,9 +19,3 @@ void Prisoner::setPlace(int p) {
 void Prisoner::setNext(Prisoner* n) {
 	next = n;
 }
-
-void add(int p) {
-	
-}
-
-void remove(int p) {}

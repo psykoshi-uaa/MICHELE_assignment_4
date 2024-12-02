@@ -2,15 +2,13 @@
 class Prisoner {
 private:
 	int place;
-	Prisoner* next, headPtr, tailPtr;
+	Prisoner* next;
 
 public:
 	Prisoner();
-	Prisoner(int place);
+	Prisoner(int place, Prisoner* next);
 	int getPlace();
 	Prisoner* getNext();
 	void setPlace(int p);
 	void setNext(Prisoner* n);
-	void add(int p);
-	void remove(int p);
 };
