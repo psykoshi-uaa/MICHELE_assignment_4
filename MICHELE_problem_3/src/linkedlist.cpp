@@ -11,6 +11,7 @@ LinkedList::~LinkedList() {
 		head = head->getNext();
 		delete temp;
 	}
+	tail->setNext(head);
 }
 
 int LinkedList::getTotal() {
@@ -30,32 +31,29 @@ void LinkedList::add(int p) {
 }
 
 void LinkedList::remove(int p) {
-	int place;
 	Prisoner* temp = head;
 	Prisoner* prev = nullptr;
-	if( p % getTotal() == 0 ){
+	int place = p % getTotal();
+	if( place == 0 ){
 		place = getTotal();
-	} else {
-		place = p % getTotal();
 	}
 	
 	while( temp != nullptr ){
-		if( temp->getCurPlace() == place ){
-			Prisoner* next = temp->getNext();
-			if( prev == nullptr ){
+		if( temp->getCurPlace() == place){
+			if( prev == nullptr || prev == tail ){
 				head = head->getNext();
 			} else {
 				prev->setNext(temp->getNext());
 			}
 			delete temp;
-			temp = next;
-			//temp->setPlace(temp->getCurPlace() - 1);
-		} else if( temp->getCurPlace() > place ){
-			temp->setPlace(temp->getCurPlace() - 1);
+			temp = nullptr;
+			break;
 		}
-		
-		if( temp != nullptr ){
-			prev = temp;
+		prev = temp;
+
+		if( prev == tail ){
+			temp = head;
+		} else {
 			temp = temp->getNext();
 		}
 	}

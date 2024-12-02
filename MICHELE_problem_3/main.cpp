@@ -25,10 +25,13 @@ int main(){
 	}
 
 	int prisonerTracker = deathRow.getTotal();
+	/*
 	while( prisonerTracker >= 1 ){
 		deathRow.remove(numWordsInRhyme);
 		prisonerTracker--;
 	}
+	*/
+	deathRow.remove(2);
 
 	deathRow.outputInitialPlaces();
 
