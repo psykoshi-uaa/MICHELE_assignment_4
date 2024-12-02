@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <iostream>
 #include <string.h>
 #include "../include/file-handling.h"
@@ -8,10 +9,14 @@ void printFromFile(char* filename){
 	std::ifstream file(filename);
 
 	while( std::getline(file, curLine) ){
-		std::cout << curLine;
+		if( curLine == "NEXT" ){
+			std::cin.ignore();
+		} else {
+			printf("%s\n", curLine.c_str());
+		}
 	}
 
 	file.close();
 
-	std::cout << std::endl;
+	printf("\n");
 }

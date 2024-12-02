@@ -9,7 +9,9 @@ private:
 public:
 	LinkedList();
 	~LinkedList();
+	int getTotal();
 	void add(int p);
 	void remove(int p);
-	void output();
+	void outputCurPlaces();
+	void outputInitialPlaces();
 };
