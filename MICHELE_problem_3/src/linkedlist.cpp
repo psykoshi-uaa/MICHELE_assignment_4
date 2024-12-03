@@ -63,12 +63,7 @@ void LinkedList::remove(int p) {
 void LinkedList::output() {
 	Prisoner* temp = head;
 	for( int i=0; i<total; i++ ){
-		std::cout << temp->getPlace() << std::endl;
+		std::cout << temp->getPlace();
 		temp = temp->getNext();
 	}
-	std::cout << std::endl;
-}
-
-void LinkedList::outputCurPrisoner() {
-	std::cout << curPrisoner->getNext()->getPlace();
 }

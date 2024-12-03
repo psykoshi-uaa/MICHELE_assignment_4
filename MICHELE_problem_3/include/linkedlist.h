@@ -16,5 +16,4 @@ public:
 	void remove(int p);
 	int getPlace(int p);
 	void output();
-	void outputCurPrisoner();
 };
