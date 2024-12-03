@@ -1,16 +1,12 @@
 #include "../include/prisoner.h"
 
-Prisoner::Prisoner() : initialPlace(0), curPlace(0), next(nullptr) {}
+Prisoner::Prisoner() : curPlace(0), next(nullptr) {}
 
 Prisoner::Prisoner(int place, Prisoner* next) :
-	initialPlace(place), curPlace(place), next(next) {}
+	curPlace(place), next(next) {}
 
-int Prisoner::getCurPlace() {
+int Prisoner::getPlace() {
 	return curPlace;
-}
-
-int Prisoner::getInitialPlace() {
-	return initialPlace;
 }
 
 Prisoner* Prisoner::getNext() {

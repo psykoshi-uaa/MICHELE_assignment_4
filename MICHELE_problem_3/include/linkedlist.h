@@ -3,8 +3,10 @@
 
 class LinkedList {
 private:
+	int total;
 	Prisoner* head;
 	Prisoner* tail;
+	Prisoner* curPrisoner;
 
 public:
 	LinkedList();
@@ -12,6 +14,7 @@ public:
 	int getTotal();
 	void add(int p);
 	void remove(int p);
-	void outputCurPlaces();
-	void outputInitialPlaces();
+	int getPlace(int p);
+	void output();
+	void outputCurPrisoner();
 };

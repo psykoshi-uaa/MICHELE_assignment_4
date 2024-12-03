@@ -3,76 +3,72 @@
 #include "../include/linkedlist.h"
 
 LinkedList::LinkedList()
-	: head(nullptr), tail(nullptr) {}
+	: total(0), head(nullptr), tail(nullptr), curPrisoner(nullptr) {
+}
 LinkedList::~LinkedList() {
+/*
 	Prisoner* temp;
 	while (head != nullptr) {
 		temp = head;
 		head = head->getNext();
 		delete temp;
 	}
-	tail->setNext(head);
+*/
 }
 
 int LinkedList::getTotal() {
-	int counter = 0;
-	Prisoner* temp = head;
-
-	while( temp != nullptr ){
-		counter++;
-		temp = temp->getNext();
-	}
-	return counter;
+	return total;
 }
 
 void LinkedList::add(int p) {
 	Prisoner* temp = new Prisoner(p, head);
+	if( tail == nullptr ){
+		tail = temp;
+		curPrisoner = temp;
+	}
 	head = temp;
+	tail->setNext(head);
+	total++;
 }
 
 void LinkedList::remove(int p) {
-	Prisoner* temp = head;
-	Prisoner* prev = nullptr;
-	int place = p % getTotal();
-	if( place == 0 ){
-		place = getTotal();
-	}
+	Prisoner* temp = curPrisoner->getNext();
+	Prisoner* prev = curPrisoner;
+	int i=1;
 	
-	while( temp != nullptr ){
-		if( temp->getCurPlace() == place){
-			if( prev == nullptr || prev == tail ){
+	while( true ){
+		if( i == p){
+			if( temp == head ){
 				head = head->getNext();
+				tail->setNext(head->getNext());
+			} else if( temp == tail ){
+				prev->setNext(temp->getNext());
+				tail = prev;
 			} else {
 				prev->setNext(temp->getNext());
 			}
+			curPrisoner = prev;
 			delete temp;
 			temp = nullptr;
+			total--;
 			break;
 		}
+
 		prev = temp;
-
-		if( prev == tail ){
-			temp = head;
-		} else {
-			temp = temp->getNext();
-		}
+		temp = temp->getNext();
+		i++;
 	}
 }
 
-void LinkedList::outputCurPlaces() {
+void LinkedList::output() {
 	Prisoner* temp = head;
-	while( temp != nullptr ){
-		std::cout << temp->getCurPlace() << std::endl;
+	for( int i=0; i<total; i++ ){
+		std::cout << temp->getPlace() << std::endl;
 		temp = temp->getNext();
 	}
 	std::cout << std::endl;
 }
 
-void LinkedList::outputInitialPlaces() {
-	Prisoner* temp = head;
-	while( temp != nullptr ){
-		std::cout << temp->getInitialPlace() << std::endl;
-		temp = temp->getNext();
-	}
-	std::cout << std::endl;
+void LinkedList::outputCurPrisoner() {
+	std::cout << curPrisoner->getNext()->getPlace();
 }

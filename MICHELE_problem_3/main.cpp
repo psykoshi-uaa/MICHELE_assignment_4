@@ -4,8 +4,8 @@
 #include "include/file-handling.h"
 
 int main(){
-	int numPrisoners = 12;
-	int numWordsInRhyme = 4;
+	int numPrisoners = 234;
+	int numWordsInRhyme = 9432;
 	char userInp;
 
 	LinkedList deathRow;
@@ -13,7 +13,8 @@ int main(){
 		deathRow.add(i);
 	}
 	
-	std::cout << "Would you like to skip the intro? [y/N]" << std::endl;
+
+	std::cout << "Would you like to skip the intro [y/N]? ";
 	std::cin >> userInp;
 	std::cin.ignore();
 	
@@ -24,16 +25,16 @@ int main(){
 		printFromFile(file_comp_intro);
 	}
 
-	int prisonerTracker = deathRow.getTotal();
-	/*
-	while( prisonerTracker >= 1 ){
+	while( deathRow.getTotal() > 1 ){
 		deathRow.remove(numWordsInRhyme);
-		prisonerTracker--;
 	}
-	*/
-	deathRow.remove(2);
 
-	deathRow.outputInitialPlaces();
+	std::cout << "STH: ah, there will be " << numPrisoners << " prisoners on the ole' chopping block and" << std::endl
+		<< "the rhyme will have... " << numWordsInRhyme << " words... The executioner must be" << std::endl
+		<< "paid by the hour." << std::endl;
+	std::cout << "STH: stand in spot number: ";
+	deathRow.output();
+	std::cout << ".";
 
 	return 0;
 }

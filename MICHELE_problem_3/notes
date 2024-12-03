@@ -1,0 +1,13 @@
+1 2 3 4 5
+
+if I want to remove every 4th place
+
+i i i i
+
+remove cur
+
+start from 5th place
+
+temp = head
+temp->next
+remove(deathrow.getPlace(4), 4)
