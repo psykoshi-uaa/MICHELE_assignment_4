@@ -6,14 +6,12 @@ LinkedList::LinkedList()
 	: total(0), head(nullptr), tail(nullptr), curPrisoner(nullptr) {
 }
 LinkedList::~LinkedList() {
-/*
 	Prisoner* temp;
-	while (head != nullptr) {
+	while (head != tail) {
 		temp = head;
 		head = head->getNext();
 		delete temp;
 	}
-*/
 }
 
 int LinkedList::getTotal() {
