@@ -35,7 +35,7 @@ int main(){
 	std::cout << "STH: just uhh- stand in spot number ";
 	deathRow.output();
 	std::cout << "." << std::endl << std::endl;
-       	std::cout << "shank someone if you have to." << std::endl << std::endl;
+       	std::cout << "STH: shank someone if you have to." << std::endl << std::endl;
 
 	return 0;
 }
