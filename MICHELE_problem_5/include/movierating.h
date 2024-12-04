@@ -5,9 +5,10 @@
 
 class MovieRating {
 private:
-	vector<std::string> movieNames;
-	vector<int> movieRatings;
-	map<int, std::string> movies;
+	std::map<std::string, std::vector<int>> movies;
 public:
-	void printFromFile(char* filename);
-}
+	MovieRating();
+	~MovieRating();
+	void updateListFromFile(char* filename);
+	void print();
+};
